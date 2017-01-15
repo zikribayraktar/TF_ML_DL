@@ -79,6 +79,8 @@ X.shape  #size of the matrix
 
 # PANDAS
 import pandas as pd
+import datetime as dtime
+
 #use pandas to load the data as dataframe
 X = pd.read_csv("data.csv", header=None)
 type(X)  #type of the variable
@@ -99,7 +101,12 @@ X.iloc[0]  # will return the 0th row of the dataframe
 X.ix[0]   #will also return the 0th row of the dataframe
 type(X.ix[0])  #returns pandas.core.series.Series
 
+#read-in a data set with column names as dataframe
+df = pd.read_csv("data2.csv")
+#create a new column which is equal to multiplication of other two columns per row
+df['val1val2'] = df.apply(lambda row: row['val1']*row['val2'], axis=1)
 
+df['datetime'] = df.apply(lambda row: dtime.datetime.strptime(row['month'], "%Y-%m"),axis=1)
 
 
 # end-of-file

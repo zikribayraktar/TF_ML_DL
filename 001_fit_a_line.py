@@ -1,3 +1,4 @@
+# import tensorflow and numpy:
 import tensorflow as tf
 import numpy as np
 
@@ -18,7 +19,8 @@ optimizer = tf.train.GradientDescentOptimizer(0.5)
 train = optimizer.minimize(loss)
 
 # Before starting, initialize the variables.  We will 'run' this first.
-init = tf.initialize_all_variables()
+#init = tf.initialize_all_variables()   #depreciated!
+init = tf.global_variables_initializer()
 
 # Launch the graph.
 sess = tf.Session()
@@ -26,8 +28,15 @@ sess.run(init)
 
 # Fit the line.
 for step in range(201):
-    sess.run(train)
+    sess.run(train)  #you have to run this to be able to compute!
     if step % 20 == 0:
         print(step, sess.run(W), sess.run(b))
 
 # Learns best fit is W: [0.1], b: [0.3]
+
+sess.close()
+
+# we could also use with ... as ... : to automatically close session
+# with tf.Session() as sess:
+#	result = session.run(c)
+#	print(result)
