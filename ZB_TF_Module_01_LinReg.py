@@ -62,6 +62,8 @@ for step in range(100):
     print(step, evals)
     train_data.append(evals)
 
+sess.close()
+
 	
 # Plot results:
 converter = plt.colors
