@@ -74,6 +74,7 @@ layer2 = h_pool2
 
 
 # Third Layer: Fully Connected (FC) Layer.  Need to use FC to use the softmax
+# note that after appying max_pooling twice, input image of 28x28 becomes 7x7, hence the weight variable has 7x7x64 dimension.
 W_fc1 = weight_variable([7*7*64, 1024])
 b_fc1 = bias_variable([1024])
 # Flatten 2nd Layer:
